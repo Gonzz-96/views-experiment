@@ -6,22 +6,22 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dev.gonz.viewsexp.databinding.ActivityMainBinding
 
-interface MainActivityViews {
+interface MainActivityViewBinder {
     val root: View
 
     interface Factory {
-        fun create(binding: ActivityMainBinding): MainActivityViews
+        fun create(binding: ActivityMainBinding): MainActivityViewBinder
     }
 }
 
-class MainActivityViewsImpl @AssistedInject constructor(
+class MainActivityViewBinderImpl @AssistedInject constructor(
     @Assisted private val binding: ActivityMainBinding,
-) : MainActivityViews {
+) : MainActivityViewBinder {
 
     override val root = binding.root
 
     @AssistedFactory
-    interface Factory : MainActivityViews.Factory {
-        override fun create(binding: ActivityMainBinding): MainActivityViewsImpl
+    interface Factory : MainActivityViewBinder.Factory {
+        override fun create(binding: ActivityMainBinding): MainActivityViewBinderImpl
     }
 }
